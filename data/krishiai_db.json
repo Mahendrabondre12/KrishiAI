@@ -1,0 +1,562 @@
+{
+  "users": [
+    {
+      "id": "usr_farmer_1",
+      "name": "Ramesh Patel",
+      "email": "ramesh.farmer@krishiai.org",
+      "phone": "+91 98234 56789",
+      "role": "farmer",
+      "language": "en",
+      "createdAt": "2026-01-10T08:00:00.000Z",
+      "smsAlertsEnabled": true,
+      "weatherAlertsEnabled": true,
+      "cropActivityAlertsEnabled": true
+    },
+    {
+      "id": "usr_expert_1",
+      "name": "Dr. Sunita Deshmukh",
+      "email": "sunita.agronomist@krishiai.org",
+      "phone": "+91 94220 11223",
+      "role": "agronomist",
+      "language": "en",
+      "createdAt": "2026-01-05T09:00:00.000Z"
+    },
+    {
+      "id": "usr_admin_1",
+      "name": "KrishiAI System Admin",
+      "email": "admin@krishiai.org",
+      "role": "admin",
+      "language": "en",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "farms": [
+    {
+      "id": "farm_punjab_1",
+      "userId": "usr_farmer_1",
+      "name": "Green Acres — Ludhiana Block",
+      "areaAcres": 5.5,
+      "state": "Punjab",
+      "district": "Ludhiana",
+      "village": "Samrala",
+      "latitude": 30.901,
+      "longitude": 75.8573,
+      "soilType": "Alluvial",
+      "irrigationType": "Borewell",
+      "activeCropId": "crop_wheat_1",
+      "createdAt": "2026-01-12T10:00:00.000Z",
+      "updatedAt": "2026-08-20T10:00:00.000Z"
+    },
+    {
+      "id": "farm_maharashtra_2",
+      "userId": "usr_farmer_1",
+      "name": "Sahyadri Organic Orchard",
+      "areaAcres": 3.2,
+      "state": "Maharashtra",
+      "district": "Nashik",
+      "village": "Dindori",
+      "latitude": 20.0059,
+      "longitude": 73.7898,
+      "soilType": "Black",
+      "irrigationType": "Drip",
+      "activeCropId": "crop_tomato_2",
+      "createdAt": "2026-02-15T11:00:00.000Z",
+      "updatedAt": "2026-08-22T08:30:00.000Z"
+    },
+    {
+      "userId": "usr_expert_1",
+      "name": "Dr.'s Registered Farm",
+      "areaAcres": 4.5,
+      "state": "Maharashtra",
+      "district": "Latur",
+      "village": "Central Taluka",
+      "latitude": 18.4088,
+      "longitude": 76.5604,
+      "soilType": "Black",
+      "irrigationType": "Borewell",
+      "id": "farm_1788608743631_ipvdqt",
+      "createdAt": "2026-09-05T11:45:43.631Z",
+      "updatedAt": "2026-09-05T11:45:43.632Z",
+      "activeCropId": "crop_1788608743632_qwi3fh"
+    }
+  ],
+  "crops": [
+    {
+      "id": "crop_wheat_1",
+      "farmId": "farm_punjab_1",
+      "userId": "usr_farmer_1",
+      "name": "Wheat",
+      "variety": "HD-3086 (Pusa Gautami)",
+      "season": "Rabi",
+      "sowingDate": "2025-11-15",
+      "expectedHarvestDate": "2026-04-10",
+      "currentStage": "Flowering & Pollination",
+      "healthScore": 88,
+      "targetYieldQuintals": 24,
+      "createdAt": "2025-11-15T06:00:00.000Z"
+    },
+    {
+      "id": "crop_tomato_2",
+      "farmId": "farm_maharashtra_2",
+      "userId": "usr_farmer_1",
+      "name": "Tomato",
+      "variety": "Abhinav Hybrid F1",
+      "season": "Zaid",
+      "sowingDate": "2026-01-05",
+      "expectedHarvestDate": "2026-04-25",
+      "currentStage": "Fruiting & Harvesting",
+      "healthScore": 78,
+      "targetYieldQuintals": 180,
+      "createdAt": "2026-01-05T07:00:00.000Z"
+    },
+    {
+      "farmId": "farm_1788608743631_ipvdqt",
+      "userId": "usr_expert_1",
+      "name": "Soybean",
+      "variety": "JS-335",
+      "season": "Kharif",
+      "sowingDate": "2026-06-15",
+      "expectedHarvestDate": "2026-10-20",
+      "currentStage": "Flowering & Pollination",
+      "healthScore": 88,
+      "targetYieldQuintals": 25,
+      "id": "crop_1788608743632_qwi3fh",
+      "createdAt": "2026-09-05T11:45:43.632Z"
+    }
+  ],
+  "soilRecords": [
+    {
+      "id": "soil_punjab_1",
+      "farmId": "farm_punjab_1",
+      "userId": "usr_farmer_1",
+      "testedAt": "2026-01-15",
+      "ph": 7.4,
+      "nitrogenKgPerHa": 310,
+      "phosphorusKgPerHa": 18.5,
+      "potassiumKgPerHa": 240,
+      "organicCarbonPct": 0.62,
+      "moisturePct": 34,
+      "electricalConductivity": 0.42,
+      "notes": "Good alluvial balance. Moderate nitrogen; optimal for wheat tillering and grain filling.",
+      "createdAt": "2026-01-15T12:00:00.000Z"
+    },
+    {
+      "id": "soil_nashik_2",
+      "farmId": "farm_maharashtra_2",
+      "userId": "usr_farmer_1",
+      "testedAt": "2026-01-08",
+      "ph": 6.8,
+      "nitrogenKgPerHa": 260,
+      "phosphorusKgPerHa": 22,
+      "potassiumKgPerHa": 310,
+      "organicCarbonPct": 0.85,
+      "moisturePct": 28,
+      "electricalConductivity": 0.35,
+      "notes": "Rich black soil with high organic matter. Excellent for tomato and vegetable fertigation.",
+      "createdAt": "2026-01-08T14:00:00.000Z"
+    }
+  ],
+  "farmActivities": [
+    {
+      "id": "act_1",
+      "farmId": "farm_punjab_1",
+      "cropId": "crop_wheat_1",
+      "userId": "usr_farmer_1",
+      "activityType": "Irrigation",
+      "title": "Crown Root Irrigation (2nd cycle)",
+      "description": "Run borewell pump for 3.5 hours across Field A and B.",
+      "quantity": "3.5 Hours pumping",
+      "costRupees": 420,
+      "date": "2026-02-18",
+      "createdAt": "2026-02-18T16:00:00.000Z"
+    },
+    {
+      "id": "act_2",
+      "farmId": "farm_punjab_1",
+      "cropId": "crop_wheat_1",
+      "userId": "usr_farmer_1",
+      "activityType": "Fertilizer",
+      "title": "Top Dressing Urea Application",
+      "description": "Applied neem coated urea prior to evening light drizzle.",
+      "quantity": "45 kg Urea / acre",
+      "costRupees": 1350,
+      "date": "2026-02-10",
+      "createdAt": "2026-02-10T11:00:00.000Z"
+    },
+    {
+      "id": "act_3",
+      "farmId": "farm_maharashtra_2",
+      "cropId": "crop_tomato_2",
+      "userId": "usr_farmer_1",
+      "activityType": "Pesticide",
+      "title": "Organic Neem Oil Spray",
+      "description": "Preventative spray against early aphid and whitefly colonies on upper leaves.",
+      "quantity": "500ml 10000ppm Neem Oil in 150L water",
+      "costRupees": 680,
+      "date": "2026-02-21",
+      "createdAt": "2026-02-21T09:00:00.000Z"
+    }
+  ],
+  "aiRecommendations": [
+    {
+      "id": "rec_init_1",
+      "farmId": "farm_punjab_1",
+      "cropId": "crop_wheat_1",
+      "userId": "usr_farmer_1",
+      "generatedAt": "2026-08-25T05:00:00.000Z",
+      "riskLevel": "medium",
+      "currentCropCondition": "Flowering stage in progress. Foliage vigor is healthy; slight humidity spike detected in district forecast.",
+      "summary": "Delay scheduled irrigation by 24 hours due to predicted cloud cover and 65% precipitation probability in Ludhiana.",
+      "todayActionPlan": {
+        "highPriority": [
+          {
+            "action": "Postpone heavy flood irrigation until tomorrow evening",
+            "why": "Predicted 12mm scattered showers will satisfy root zone moisture without waterlogging risks."
+          },
+          {
+            "action": "Scout upper leaves for linear yellow rust pustules",
+            "why": "Morning dew and 82% relative humidity create ideal micro-climate for stripe rust incubation."
+          }
+        ],
+        "mediumPriority": [
+          {
+            "action": "Prepare foliar Potassium Nitrate (13:0:45) spray for post-rain application",
+            "why": "Boosts grain weight and starch accumulation during anthesis/pollination."
+          }
+        ],
+        "monitor": [
+          {
+            "action": "Check drainage furrows in low-lying corner of Field B",
+            "why": "Prevent standing water which can trigger collar rot."
+          }
+        ]
+      },
+      "irrigationAdvice": {
+        "recommendation": "Delay irrigation for 24-36 hours.",
+        "status": "Delay",
+        "rationale": "Adequate soil moisture (34%) + incoming rain probability of 65%."
+      },
+      "weatherRisk": "Overcast skies with moderate gusts up to 18 km/h. Avoid high chemical spray pressure in midday.",
+      "soilConsideration": "Alluvial soil drainage is good, but nitrogen leaching can occur if heavy downpours happen.",
+      "next24Hours": "Rain clouds expected by 4:00 PM. Keep harvesting machinery under shed.",
+      "next7Days": "Clear sunny skies return on Day 3; ideal window for micronutrient foliar application.",
+      "warnings": [
+        "Do not spray insecticides between 9 AM - 12 PM to preserve pollinating honeybees.",
+        "Verify chemical labels before tank mixing."
+      ],
+      "confidence": {
+        "level": "High",
+        "score": 0.91,
+        "explanation": "Calibrated with real live Open-Meteo GPS weather, verified soil test (pH 7.4), and HD-3086 flowering timeline."
+      },
+      "dataSources": {
+        "weatherFreshness": "Live Open-Meteo API (synced 10 mins ago)",
+        "cropStageConsidered": "Flowering & Pollination (Day 101)",
+        "soilDataConsidered": true,
+        "recentActivitiesCount": 2
+      }
+    }
+  ],
+  "diseaseAnalyses": [
+    {
+      "id": "dia_sample_1",
+      "cropName": "Wheat",
+      "possibleIssue": "Early Stage Stripe / Yellow Rust (Puccinia striiformis)",
+      "confidenceLevel": "High",
+      "severity": "Moderate",
+      "visibleSymptoms": [
+        "Distinct chlorotic yellow streaks running parallel to leaf veins",
+        "Small powdery yellow-orange uredinial pustules",
+        "Premature yellowing of flag leaves"
+      ],
+      "causesAndConditions": "Cool daytime temperatures (10-18°C) accompanied by heavy morning dew and high humidity.",
+      "immediateActions": [
+        "Isolate infected field section to prevent spore dispersal via wind.",
+        "Avoid excessive urea top-dressing which makes leaf cuticle softer."
+      ],
+      "organicManagement": [
+        "Foliar spray of fermented cow butter milk (sour chhas) 10% + 5g/L Trichoderma viride."
+      ],
+      "chemicalManagement": [
+        "Propiconazole 25% EC @ 1ml/liter (or Tebuconazole 25.9% EC @ 1ml/L) targeted thoroughly on foliage."
+      ],
+      "preventativeMeasures": [
+        "Adopt rust-resistant wheat varieties (e.g. HD-3086, DBW-187, PBW-725) in next sowing cycle.",
+        "Maintain row spacing of 20-22.5 cm for proper sun penetration."
+      ],
+      "expertReviewRecommended": true,
+      "additionalInfoNeeded": [
+        "Percentage of field canopy showing streaks",
+        "Recent night temperatures and fog duration"
+      ],
+      "disclaimer": "AI-generated visual screening based on image patterns. Never take irreversible agronomic measures without verifying locally with a Krishi Vigyan Kendra (KVK) agronomist.",
+      "analyzedAt": "2026-02-20T14:30:00.000Z"
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": "msg_1",
+      "userId": "usr_farmer_1",
+      "farmId": "farm_punjab_1",
+      "sender": "user",
+      "text": "My wheat field is in flowering stage and the sky looks cloudy. Should I irrigate today?",
+      "timestamp": "2026-02-24T06:15:00.000Z"
+    },
+    {
+      "id": "msg_2",
+      "userId": "usr_farmer_1",
+      "farmId": "farm_punjab_1",
+      "sender": "assistant",
+      "text": "Namaste Ramesh ji! Based on your Ludhiana farm data (Flowering stage, HD-3086 variety, soil moisture at 34%) and the live weather forecast showing 65% chance of rain (approx. 10-12 mm) this evening, **you should delay irrigation by 24 to 36 hours**.\n\nWaterlogging during flowering can cause root hypoxia and grain shattering if winds pick up. If the expected rain does not materialize by tomorrow evening, give a light 2-hour irrigation cycle.",
+      "timestamp": "2026-02-24T06:15:04.000Z",
+      "farmContextUsed": {
+        "farmName": "Green Acres — Ludhiana Block",
+        "crop": "Wheat (HD-3086)",
+        "stage": "Flowering & Pollination",
+        "weather": "Overcast, 22°C, 65% Rain Prob"
+      },
+      "suggestedQuestions": [
+        "What fertilizer should I spray after this rain?",
+        "How do I identify Yellow Rust symptoms on my wheat leaves?",
+        "What is the ideal soil temperature for grain filling?"
+      ]
+    }
+  ],
+  "alerts": [
+    {
+      "farmId": "farm_maharashtra_2",
+      "userId": "usr_farmer_1",
+      "title": "🌧️ High Rainfall Warning",
+      "message": "Rain probability is 100% in Nashik. Check field drainage and postpone flood irrigation.",
+      "type": "weather",
+      "severity": "warning",
+      "id": "alt_1788608372310_7h5le3",
+      "isDismissed": false,
+      "createdAt": "2026-09-05T11:39:32.310Z"
+    },
+    {
+      "id": "alt_1",
+      "farmId": "farm_punjab_1",
+      "userId": "usr_farmer_1",
+      "title": "🌧️ Heavy Rain & Gust Warning",
+      "message": "Ludhiana district meteorological advisory: 10-15mm scattered showers expected within next 18 hours. Postpone open flood irrigation.",
+      "type": "weather",
+      "severity": "warning",
+      "isDismissed": false,
+      "createdAt": "2026-08-25T03:00:00.000Z"
+    },
+    {
+      "id": "alt_2",
+      "farmId": "farm_maharashtra_2",
+      "userId": "usr_farmer_1",
+      "title": "💧 Tomato Fertigation Window",
+      "message": "Tomato crop in Dindori is at peak fruit enlargement. Calcium Nitrate + Boron fertigation recommended to prevent Blossom End Rot.",
+      "type": "nutrient",
+      "severity": "info",
+      "isDismissed": false,
+      "createdAt": "2026-08-24T08:00:00.000Z"
+    }
+  ],
+  "notifications": [
+    {
+      "userId": "usr_expert_1",
+      "title": "Daily Morning SMS Dispatched (05 Sept 2026)",
+      "body": "Automated 06:00 AM agricultural update sent to +91 94220 11223 for Dr.'s Registered Farm.",
+      "type": "weather",
+      "id": "notif_1788608744057_lovfwb",
+      "isRead": false,
+      "createdAt": "2026-09-05T11:45:44.057Z"
+    },
+    {
+      "userId": "usr_farmer_1",
+      "title": "Daily Morning SMS Dispatched (05 Sept 2026)",
+      "body": "Automated 06:00 AM agricultural update sent to +91 98234 56789 for Green Acres — Ludhiana Block.",
+      "type": "weather",
+      "id": "notif_1788608743630_iuk07q",
+      "isRead": false,
+      "createdAt": "2026-09-05T11:45:43.630Z"
+    },
+    {
+      "id": "notif_1",
+      "userId": "usr_farmer_1",
+      "title": "New AI Farming Action Plan Available",
+      "body": "Today's prioritized action plan for Green Acres Wheat Field has been updated based on fresh satellite & weather feeds.",
+      "type": "recommendation",
+      "isRead": false,
+      "createdAt": "2026-08-25T05:00:00.000Z"
+    },
+    {
+      "id": "notif_2",
+      "userId": "usr_farmer_1",
+      "title": "Expert Case Review Updated",
+      "body": "Dr. Sunita Deshmukh has reviewed your crop leaf diagnosis and added a verified prescription.",
+      "type": "expert",
+      "isRead": false,
+      "createdAt": "2026-08-23T11:20:00.000Z"
+    }
+  ],
+  "expertCases": [
+    {
+      "id": "case_1",
+      "farmId": "farm_punjab_1",
+      "userId": "usr_farmer_1",
+      "farmerName": "Ramesh Patel",
+      "farmerPhone": "+91 98234 56789",
+      "cropName": "Wheat (HD-3086)",
+      "location": "Ludhiana, Punjab",
+      "title": "Yellowing of Flag Leaf Tips across 1.5 Acre Patch",
+      "description": "Noticed bright yellow spots turning into linear stripes on upper leaves after last week's dense fog. Need agronomist confirmation on dosage.",
+      "aiAnalysisSummary": "AI visual scan flagged 88% probability of Stripe Rust (Puccinia striiformis). Recommended Propiconazole 25% EC.",
+      "weatherSummary": "Avg temp: 18°C, Humidity: 84%, Morning dew persistent for 4 hours daily.",
+      "status": "Resolved",
+      "assignedExpertName": "Dr. Sunita Deshmukh (Senior Agronomist, PAU)",
+      "expertDiagnosis": "Confirmed mild Stripe Rust outbreak triggered by micro-climatic humidity. No collar rot observed.",
+      "expertPrescription": "Apply Propiconazole 25% EC @ 200ml in 200 liters of water per acre using hollow cone nozzle. Avoid spraying if wind exceeds 15 km/h. Re-scout in 7 days.",
+      "resolvedAt": "2026-02-22T16:00:00.000Z",
+      "createdAt": "2026-02-20T15:00:00.000Z"
+    }
+  ],
+  "satelliteHealth": [
+    {
+      "farmId": "farm_punjab_1",
+      "lastPassDate": "2026-08-24",
+      "isAvailable": true,
+      "ndviScore": 0.76,
+      "vegetationVitality": "Good",
+      "moistureIndexNdwi": 0.42,
+      "cropStressPct": 12,
+      "anomalyDetected": false,
+      "fieldZoneHealth": [
+        {
+          "zone": "North Sector (A1)",
+          "vitality": "High Canopy (NDVI 0.81)",
+          "status": "Healthy"
+        },
+        {
+          "zone": "Central Sector (A2)",
+          "vitality": "Uniform (NDVI 0.78)",
+          "status": "Healthy"
+        },
+        {
+          "zone": "South-East Lowland (B1)",
+          "vitality": "Slight Chlorosis (NDVI 0.68)",
+          "status": "Moderate"
+        },
+        {
+          "zone": "South Border (B2)",
+          "vitality": "High Canopy (NDVI 0.79)",
+          "status": "Healthy"
+        }
+      ],
+      "satelliteSensor": "Sentinel-2 / ESA Multispectral MSI (10m resolution)"
+    },
+    {
+      "farmId": "farm_maharashtra_2",
+      "lastPassDate": "2026-08-23",
+      "isAvailable": true,
+      "ndviScore": 0.82,
+      "vegetationVitality": "Excellent",
+      "moistureIndexNdwi": 0.54,
+      "cropStressPct": 8,
+      "anomalyDetected": false,
+      "fieldZoneHealth": [
+        {
+          "zone": "Orchard Row 1-10",
+          "vitality": "Dense Foliage (NDVI 0.84)",
+          "status": "Healthy"
+        },
+        {
+          "zone": "Orchard Row 11-20",
+          "vitality": "Dense Foliage (NDVI 0.81)",
+          "status": "Healthy"
+        },
+        {
+          "zone": "Nursery Area",
+          "vitality": "Active Growth (NDVI 0.79)",
+          "status": "Healthy"
+        }
+      ],
+      "satelliteSensor": "Landsat 9 / OLI-2 (15m pansharpened)"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log_1788608743632_vb0gde",
+      "userId": "usr_expert_1",
+      "action": "CROP_ADD",
+      "details": "Added Soybean (JS-335) to farm farm_1788608743631_ipvdqt",
+      "timestamp": "2026-09-05T11:45:43.632Z"
+    },
+    {
+      "id": "log_1788608743631_k8noer",
+      "userId": "usr_expert_1",
+      "action": "FARM_CREATE",
+      "details": "Created farm \"Dr.'s Registered Farm\" in Latur, Maharashtra",
+      "timestamp": "2026-09-05T11:45:43.631Z"
+    },
+    {
+      "id": "log_1",
+      "userId": "usr_farmer_1",
+      "action": "LOGIN",
+      "details": "User authenticated into KrishiAI web portal",
+      "timestamp": "2026-08-25T04:30:00.000Z"
+    },
+    {
+      "id": "log_2",
+      "userId": "usr_farmer_1",
+      "action": "AI_RECOMMENDATION_GENERATED",
+      "details": "Gemini 3.7 Flash synthesized farm advisory with Open-Meteo live context",
+      "timestamp": "2026-08-25T05:00:00.000Z"
+    }
+  ],
+  "mobileSettings": [
+    {
+      "userId": "usr_farmer_1",
+      "phone": "+91 98234 56789",
+      "dailyUpdatesEnabled": true,
+      "dispatchTime": "06:00 AM",
+      "channels": [
+        "sms",
+        "whatsapp"
+      ],
+      "language": "en",
+      "includeWeather": true,
+      "includeCropAdvisory": true,
+      "includeIrrigationAlert": true,
+      "includePestWarnings": true,
+      "lastDispatchedAt": "2026-09-05T11:45:43.630Z"
+    }
+  ],
+  "mobileLogs": [
+    {
+      "userId": "usr_expert_1",
+      "farmId": "farm_1788608743631_ipvdqt",
+      "farmName": "Dr.'s Registered Farm",
+      "location": "Latur, Maharashtra",
+      "phone": "+91 94220 11223",
+      "channel": "sms",
+      "status": "Delivered",
+      "weatherSummary": "22°C-30°C, Mainly Clear, 84% Rain",
+      "cropSummary": "Soybean (Flowering & Pollination)",
+      "fullMessageText": "🌾 KRISHIAI DAILY AUTOMATED ALERT (05 Sept 2026)\n👨‍🌾 Farmer: Dr. Sunita Deshmukh | Mob: +91 94220 11223\n📍 Farm: Dr.'s Registered Farm (Latur, Maharashtra)\n\n⛅ WEATHER FORECAST:\n• Temp: 22°C - 30°C | Mainly Clear\n• Rain Chance: 84% | Wind: 11 km/h\n• Spray Advisory: Avoid foliar spraying due to wind/rain risk.\n\n🌱 CROP STATUS & ACTION:\n• Crop: Soybean (JS-335)\n• Stage: Flowering & Pollination\n• Irrigation: Postpone watering: Rain chance is 84%.\n• Action: Inspect foliage for early pest symptoms.\n\n📞 Kisan Helpline: 1800-180-1551 (Toll-Free)",
+      "gatewayResponseId": "AUTO_SMS_08744057",
+      "id": "sms_1788608744057_3f3o1b",
+      "timestamp": "2026-09-05T11:45:44.057Z"
+    },
+    {
+      "userId": "usr_farmer_1",
+      "farmId": "farm_punjab_1",
+      "farmName": "Green Acres — Ludhiana Block",
+      "location": "Ludhiana, Punjab",
+      "phone": "+91 98234 56789",
+      "channel": "sms",
+      "status": "Delivered",
+      "weatherSummary": "26°C-33°C, Clear Sky, 31% Rain",
+      "cropSummary": "Wheat (Flowering & Pollination)",
+      "fullMessageText": "🌾 KRISHIAI DAILY AUTOMATED ALERT (05 Sept 2026)\n👨‍🌾 Farmer: Ramesh Patel | Mob: +91 98234 56789\n📍 Farm: Green Acres — Ludhiana Block (Ludhiana, Punjab)\n\n⛅ WEATHER FORECAST:\n• Temp: 26°C - 33°C | Clear Sky\n• Rain Chance: 31% | Wind: 6 km/h\n• Spray Advisory: Safe conditions for scheduled foliar spray.\n\n🌱 CROP STATUS & ACTION:\n• Crop: Wheat (HD-3086 (Pusa Gautami))\n• Stage: Flowering & Pollination\n• Irrigation: Schedule normal irrigation in early morning.\n• Advisory: Delay scheduled irrigation by 24 hours due to predicted cloud cover and 65% precipitation proba...\n\n📞 Kisan Helpline: 1800-180-1551 (Toll-Free)",
+      "gatewayResponseId": "AUTO_SMS_08743629",
+      "id": "sms_1788608743629_mih059",
+      "timestamp": "2026-09-05T11:45:43.629Z"
+    }
+  ]
+}

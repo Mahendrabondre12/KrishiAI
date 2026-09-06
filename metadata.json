@@ -1,0 +1,12 @@
+{
+  "name": "KrishiAI — Agricultural Intelligence Platform",
+  "description": "AI-powered agricultural decision-support platform combining real-time weather, soil analysis, multimodal crop disease diagnosis, expert escalation, and personalized Gemini agronomic intelligence for farmers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
