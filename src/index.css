@@ -1,1 +1,182 @@
 @import "tailwindcss";
+
+/* =========================================================
+   BLACK COLOR / DEEP OBSIDIAN THEME ENGINE FOR KRISHIAI
+   ========================================================= */
+
+:root {
+  color-scheme: light dark;
+}
+
+html:not(.dark),
+body:not(.dark) {
+  color-scheme: light;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.dark,
+body.dark,
+.dark {
+  color-scheme: dark;
+  background-color: #030712;
+  color: #f8fafc;
+}
+
+/* Base Body & App Container in Black Mode */
+.dark body,
+.dark .app-container {
+  background-color: #030712 !important;
+  color: #f8fafc !important;
+}
+
+/* Surfaces & Cards in Black Mode */
+.dark .bg-white {
+  background-color: #0b0f17 !important;
+  color: #f8fafc !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-gray-50 {
+  background-color: #04070d !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .bg-slate-100,
+.dark .bg-gray-100 {
+  background-color: #0f1724 !important;
+  color: #f8fafc !important;
+}
+
+.dark .bg-slate-200,
+.dark .bg-gray-200 {
+  background-color: #1a2332 !important;
+  color: #f8fafc !important;
+}
+
+/* Hover States in Black Mode */
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-gray-50:hover {
+  background-color: #121a28 !important;
+}
+
+.dark .hover\:bg-slate-100:hover,
+.dark .hover\:bg-gray-100:hover {
+  background-color: #172132 !important;
+}
+
+.dark .hover\:bg-slate-200:hover {
+  background-color: #1e2a3f !important;
+}
+
+/* Emerald Sub-Banners in Black Mode */
+.dark .bg-emerald-50,
+.dark .bg-teal-50 {
+  background-color: #061914 !important;
+  border-color: #064e3b !important;
+}
+
+.dark .hover\:bg-emerald-50:hover {
+  background-color: #0b2921 !important;
+}
+
+.dark .bg-emerald-100 {
+  background-color: #083325 !important;
+  color: #6ee7b7 !important;
+}
+
+.dark .text-emerald-950,
+.dark .text-emerald-900,
+.dark .text-emerald-800 {
+  color: #6ee7b7 !important;
+}
+
+.dark .text-emerald-700 {
+  color: #34d399 !important;
+}
+
+/* High-Contrast Typography in Black Mode */
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-gray-900,
+.dark .text-gray-800 {
+  color: #f8fafc !important;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-gray-700,
+.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400,
+.dark .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Borders & Dividers in Black Mode */
+.dark .border-slate-200,
+.dark .border-slate-100,
+.dark .border-gray-200,
+.dark .border-gray-100,
+.dark .border-slate-300 {
+  border-color: #1e293b !important;
+}
+
+.dark .divide-slate-100 > * + *,
+.dark .divide-slate-200 > * + * {
+  border-color: #1e293b !important;
+}
+
+/* Form Controls & Inputs in Black Mode */
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+  background-color: #090d15 !important;
+  border-color: #273549 !important;
+  color: #f8fafc !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: #10b981 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25) !important;
+}
+
+/* Modals & Dropdown Popups in Black Mode */
+.dark [role="dialog"],
+.dark .modal-content,
+.dark .dropdown-menu {
+  background-color: #0b0f17 !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+/* Sleek Dark Scrollbars */
+.dark ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #030712;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
