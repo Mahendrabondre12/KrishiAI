@@ -24,6 +24,16 @@ import {
   Save,
   Check
 } from 'lucide-react';
+import {
+  AuthChoiceBadges,
+  SignInEmblem,
+  SignUpEmblem,
+  SignOutLogoIcon,
+  SignInLogoIcon,
+  SignOutEmblem,
+  FlippableAuthImageCard,
+  DashboardAuthInfoModal
+} from './AuthBadges';
 import { User, AppLanguage, UserRole } from '../types';
 import {
   signInIndividualUser,
@@ -59,6 +69,13 @@ export const AuthView: React.FC<AuthViewProps> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [showDashboardInfoModal, setShowDashboardInfoModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!currentUser && initialMode) {
+      setMode(initialMode);
+    }
+  }, [initialMode, currentUser]);
 
   // Common credentials
   const [email, setEmail] = useState<string>('');
@@ -362,10 +379,11 @@ export const AuthView: React.FC<AuthViewProps> = ({
               <button
                 onClick={handleSignOutClick}
                 disabled={loading}
-                className="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-2 shadow-sm cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-700 hover:to-red-800 active:scale-95 text-white font-black text-xs rounded-xl transition flex items-center justify-center space-x-2 shadow-sm border border-red-400/40 cursor-pointer"
               >
-                <LogOut className="w-4 h-4" />
+                <SignOutLogoIcon size={20} />
                 <span>{loading ? 'Signing out...' : 'Sign Out of Account'}</span>
+                <span className="text-xs font-black text-red-200">&gt;</span>
               </button>
             </div>
 
@@ -622,24 +640,39 @@ export const AuthView: React.FC<AuthViewProps> = ({
             </div>
           </div>
         ) : (
-          /* User is NOT signed in: display Tabs for Sign In vs Sign Up */
+          /* User is NOT signed in: display Visual Badges and Form for Sign In vs Sign Up */
           <div>
-            {/* Mode Switcher Tabs */}
-            <div className="grid grid-cols-2 border-b border-slate-200 bg-slate-50 text-xs font-bold">
+            {/* Visual Agricultural Artwork with 3D Flipping Interaction */}
+            <div className="pt-4 pb-3 px-4 bg-gradient-to-b from-emerald-50/70 via-slate-50 to-white dark:from-slate-900/60 dark:via-[#090d15] dark:to-[#070a10] border-b border-slate-200 dark:border-slate-800 text-center">
+              <FlippableAuthImageCard
+                mode={mode}
+                onModeChange={(newMode) => {
+                  setMode(newMode);
+                  setErrorMessage(null);
+                }}
+                size={195}
+                showFlipPrompt={true}
+                showSegmentedControls={true}
+                onOpenDashboardInfo={() => setShowDashboardInfoModal(true)}
+              />
+            </div>
+
+            {/* Secondary Segmented Switcher */}
+            <div className="grid grid-cols-2 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0a0f18] text-xs font-bold">
               <button
                 type="button"
                 onClick={() => {
                   setMode('signin');
                   setErrorMessage(null);
                 }}
-                className={`py-3.5 px-4 text-center border-b-2 transition flex items-center justify-center space-x-2 cursor-pointer ${
+                className={`py-3 px-4 text-center border-b-2 transition flex items-center justify-center space-x-2 cursor-pointer ${
                   mode === 'signin'
-                    ? 'border-emerald-600 text-emerald-900 bg-white font-black'
-                    : 'border-transparent text-slate-500 hover:text-slate-800'
+                    ? 'border-emerald-600 text-emerald-900 dark:text-emerald-300 bg-white dark:bg-[#0c121e] font-black shadow-xs'
+                    : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
                 }`}
               >
                 <LogIn className="w-4 h-4" />
-                <span>Sign In (मौजूदा खाता)</span>
+                <span>Sign In</span>
               </button>
               <button
                 type="button"
@@ -647,14 +680,14 @@ export const AuthView: React.FC<AuthViewProps> = ({
                   setMode('signup');
                   setErrorMessage(null);
                 }}
-                className={`py-3.5 px-4 text-center border-b-2 transition flex items-center justify-center space-x-2 cursor-pointer ${
+                className={`py-3 px-4 text-center border-b-2 transition flex items-center justify-center space-x-2 cursor-pointer ${
                   mode === 'signup'
-                    ? 'border-emerald-600 text-emerald-900 bg-white font-black'
-                    : 'border-transparent text-slate-500 hover:text-slate-800'
+                    ? 'border-emerald-600 text-emerald-900 dark:text-emerald-300 bg-white dark:bg-[#0c121e] font-black shadow-xs'
+                    : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
                 }`}
               >
                 <UserPlus className="w-4 h-4" />
-                <span>Sign Up (नया खाता बनाएं)</span>
+                <span>Sign Up</span>
               </button>
             </div>
 
@@ -725,14 +758,17 @@ export const AuthView: React.FC<AuthViewProps> = ({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full mt-3 py-3.5 px-6 rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 hover:from-emerald-700 hover:to-green-700 active:scale-98 text-white font-black text-sm shadow-md hover:shadow-emerald-600/30 transition flex items-center justify-center space-x-2.5 cursor-pointer border border-emerald-400/40"
                   >
                     {loading ? (
                       <span>Signing in...</span>
                     ) : (
                       <>
-                        <LogIn className="w-4 h-4" />
-                        <span>Sign In to Account</span>
+                        <svg className="w-4 h-4 text-emerald-100" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
+                        </svg>
+                        <span className="tracking-wide">Sign In</span>
+                        <span className="font-bold text-base text-emerald-100">&gt;</span>
                       </>
                     )}
                   </button>
@@ -968,14 +1004,17 @@ export const AuthView: React.FC<AuthViewProps> = ({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-2 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full mt-3 py-3.5 px-6 rounded-full bg-white hover:bg-emerald-50 dark:bg-[#0c121e] dark:hover:bg-emerald-950/60 active:scale-98 text-emerald-800 dark:text-emerald-300 font-black text-sm border-2 border-emerald-600 shadow-md hover:shadow-emerald-600/20 transition flex items-center justify-center space-x-2.5 cursor-pointer"
                   >
                     {loading ? (
                       <span>Creating individual account...</span>
                     ) : (
                       <>
-                        <CheckCircle2 className="w-4 h-4" />
-                        <span>Create Individual Account &amp; Sign In</span>
+                        <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
+                        </svg>
+                        <span className="tracking-wide">Sign Up</span>
+                        <span className="font-bold text-base text-emerald-700 dark:text-emerald-400">&gt;</span>
                       </>
                     )}
                   </button>
@@ -998,6 +1037,17 @@ export const AuthView: React.FC<AuthViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* Dashboard Information & 3D Flip Card Modal */}
+      <DashboardAuthInfoModal
+        isOpen={showDashboardInfoModal}
+        onClose={() => setShowDashboardInfoModal(false)}
+        initialMode={mode}
+        onProceedAuth={(targetMode) => {
+          setMode(targetMode);
+          setShowDashboardInfoModal(false);
+        }}
+      />
     </div>
   );
 };

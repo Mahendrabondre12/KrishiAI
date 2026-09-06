@@ -115,50 +115,38 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               </button>
             </div>
 
-            {/* Quick Actions Row (Theme toggle & Mobile SMS/WhatsApp updates) */}
-            <div className="grid grid-cols-2 gap-2.5 my-3.5">
-              {/* Theme Switcher Button */}
-              <div className="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-[#0d131f] border border-slate-200 dark:border-slate-800">
-                <span className="text-xs font-bold text-slate-600 dark:text-slate-400">Theme:</span>
-                <div className="flex items-center p-0.5 rounded-lg bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-700">
-                  <button
-                    type="button"
-                    onClick={() => onToggleTheme('light')}
-                    className={`px-2 py-1 rounded text-[10px] font-bold flex items-center space-x-1 transition ${
-                      theme === 'light'
-                        ? 'bg-white text-amber-600 shadow-xs'
-                        : 'text-slate-500 dark:text-slate-400'
-                    }`}
-                  >
-                    <Sun className="w-3 h-3 text-amber-500" />
-                    <span>Light</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onToggleTheme('dark')}
-                    className={`px-2 py-1 rounded text-[10px] font-bold flex items-center space-x-1 transition ${
-                      theme === 'dark'
-                        ? 'bg-emerald-600 text-white shadow-xs'
-                        : 'text-slate-500 dark:text-slate-400'
-                    }`}
-                  >
-                    <Moon className="w-3 h-3 text-emerald-300" />
-                    <span>Dark</span>
-                  </button>
-                </div>
+            {/* Theme Option: Dedicated Choice between Dark and Light Theme */}
+            <div className="my-3.5 p-3 rounded-2xl bg-slate-50 dark:bg-[#0d131f] border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Theme Option</span>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">Choice between Dark and Light</p>
               </div>
-
-              {/* Daily Mobile Alerts Trigger */}
-              <button
-                onClick={() => {
-                  setIsMoreOpen(false);
-                  onOpenMobileUpdates();
-                }}
-                className="flex items-center justify-center space-x-1.5 p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700/60 text-emerald-800 dark:text-emerald-300 font-bold text-xs cursor-pointer hover:bg-emerald-100 transition"
-              >
-                <Smartphone className="w-3.5 h-3.5" />
-                <span className="truncate">SMS &amp; WhatsApp</span>
-              </button>
+              <div className="flex items-center p-1 rounded-xl bg-slate-200/90 dark:bg-slate-900 border border-slate-300 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => onToggleTheme('light')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition cursor-pointer ${
+                    theme === 'light'
+                      ? 'bg-white text-amber-600 shadow-xs ring-1 ring-amber-500/20'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800'
+                  }`}
+                >
+                  <Sun className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Light</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onToggleTheme('dark')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition cursor-pointer ${
+                    theme === 'dark'
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <Moon className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>Dark</span>
+                </button>
+              </div>
             </div>
 
             {/* Modules Grid */}

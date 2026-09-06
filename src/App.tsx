@@ -56,6 +56,7 @@ import { AdminView } from './components/AdminView';
 import { StateMapTrackerView } from './components/StateMapTrackerView';
 import { AddFarmModal, RecordActivityModal } from './components/Modals';
 import { AuthView } from './components/AuthView';
+import { SignOutLogoIcon } from './components/AuthBadges';
 import { DailyMobileUpdatesModal } from './components/DailyMobileUpdatesModal';
 import { MobileNav } from './components/MobileNav';
 import {
@@ -76,6 +77,7 @@ export default function App() {
   const [activeView, setActiveView] = useState<string>(() => {
     return getLocalUserProfile() ? 'dashboard' : 'auth';
   });
+  const [authInitialMode, setAuthInitialMode] = useState<'signin' | 'signup'>('signin');
 
   const [farms, setFarms] = useState<Farm[]>([]);
   const [activeFarm, setActiveFarm] = useState<Farm | null>(null);
@@ -660,11 +662,11 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right: Black Mode Toggle, Low-Data Toggle, Voice Assistant, Notifications, Avatar */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Theme Option: Dark & Light Dual-Segmented Switch */}
+          {/* Right: Only Theme Option (Choice between Dark and Light), Notification Bell, User Avatar */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Theme Option: Choice between Dark and Light */}
             <div
-              className={`flex items-center p-0.5 rounded-xl border transition shrink-0 ${
+              className={`flex items-center p-1 rounded-xl border transition shrink-0 ${
                 theme === 'dark'
                   ? 'bg-[#090d15] border-slate-800 text-slate-300 shadow-inner'
                   : 'bg-slate-100 border-slate-200 text-slate-700'
@@ -675,66 +677,30 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setTheme('light')}
-                className={`flex items-center space-x-1 px-2 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                   theme === 'light'
-                    ? 'bg-white text-amber-600 shadow-xs border border-slate-200'
+                    ? 'bg-white text-amber-600 shadow-xs border border-slate-200 ring-1 ring-amber-500/20'
                     : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
                 title="Select Light Theme"
               >
                 <Sun className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                <span className="text-[11px]">Light</span>
+                <span className="text-xs font-semibold">Light</span>
               </button>
               <button
                 type="button"
                 onClick={() => setTheme('dark')}
-                className={`flex items-center space-x-1 px-2 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                   theme === 'dark'
-                    ? 'bg-zinc-900 text-emerald-400 shadow-xs border border-emerald-600/60 ring-1 ring-emerald-500/20'
+                    ? 'bg-zinc-900 text-emerald-400 shadow-xs border border-emerald-600/60 ring-1 ring-emerald-500/30'
                     : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
                 title="Select Dark Theme"
               >
                 <Moon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span className="text-[11px]">Dark</span>
+                <span className="text-xs font-semibold">Dark</span>
               </button>
             </div>
-
-            {/* Low Data Mode Toggle */}
-            <button
-              onClick={() => setLowDataMode(!lowDataMode)}
-              title={lowDataMode ? 'Low Data Mode ON' : 'Toggle Low Data Mode'}
-              className={`p-1.5 sm:px-2.5 sm:py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition ${
-                lowDataMode
-                  ? 'bg-amber-500 text-amber-950 ring-2 ring-amber-300 font-bold'
-                  : theme === 'dark'
-                  ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              {lowDataMode ? <WifiOff className="w-3.5 h-3.5" /> : <Wifi className="w-3.5 h-3.5" />}
-              <span className="hidden lg:inline">{t.lowDataMode}</span>
-            </button>
-
-            {/* Daily Mobile Updates Launcher */}
-            <button
-              onClick={() => setShowMobileUpdatesModal(true)}
-              className="px-2.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold flex items-center space-x-1.5 shadow-xs transition cursor-pointer"
-              title="Automated Daily Mobile Updates (SMS & WhatsApp)"
-            >
-              <span className="text-sm">📱</span>
-              <span className="hidden sm:inline">Daily Mobile Updates</span>
-              <span className="px-1.5 py-0.2 bg-emerald-700 text-[10px] rounded text-white font-mono">06:00 AM</span>
-            </button>
-
-            {/* Quick Voice Assistant Launcher */}
-            <button
-              onClick={() => setActiveView('chat')}
-              className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 text-slate-700 transition"
-              title="Voice Assistant (Hindi / Marathi / English)"
-            >
-              🎙️
-            </button>
 
             {/* Notification Bell */}
             <div className="relative">
@@ -771,8 +737,8 @@ export default function App() {
               )}
             </div>
 
-            {/* User Avatar & Role Switcher OR Sign In */}
-            {user ? (
+            {/* User Avatar & Role Switcher */}
+            {user && (
               <div className="relative">
                 <button
                   onClick={() => setShowRoleDropdown(!showRoleDropdown)}
@@ -874,52 +840,19 @@ export default function App() {
                         onClick={handleSignOut}
                         className="w-full text-left px-3 py-1.5 text-xs hover:bg-red-50 text-red-600 font-bold flex items-center space-x-1.5 cursor-pointer"
                       >
-                        <LogOut className="w-3.5 h-3.5" />
+                        <SignOutLogoIcon size={18} />
                         <span>Sign Out of Account</span>
                       </button>
                     </div>
                   </div>
                 )}
               </div>
-            ) : (
-              <button
-                onClick={() => setActiveView('auth')}
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-sm cursor-pointer"
-              >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>Sign In / Sign Up</span>
-              </button>
             )}
           </div>
         </header>
 
         {/* Main Content Area */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-28 md:pb-6">
-          {!user && activeView !== 'auth' && (
-            <div className="mb-5 p-3.5 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-300 rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs">
-              <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
-                  🌾
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-emerald-950">
-                    Sign in to your personal Farmer account
-                  </div>
-                  <div className="text-[11px] text-emerald-800">
-                    Save your crop harvest records, live field coordinates, and personalized AI advisories.
-                  </div>
-                </div>
-              </div>
-              <button
-                onClick={() => setActiveView('auth')}
-                className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center space-x-1.5 self-start sm:self-auto cursor-pointer"
-              >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>Sign In / Sign Up</span>
-              </button>
-            </div>
-          )}
-
           {activeView === 'dashboard' && (
             <DashboardView
               farm={activeFarm}
@@ -941,7 +874,11 @@ export default function App() {
               onNavigate={(v) => setActiveView(v)}
               onAdoptCrop={handleAdoptCrop}
               onUpdateStage={handleUpdateCropStage}
-              onOpenAuthModal={() => setActiveView('auth')}
+              onOpenAuthModal={(mode) => {
+                setAuthInitialMode(mode || 'signin');
+                setActiveView('auth');
+              }}
+              onSignOut={handleSignOut}
               onOpenMobileUpdates={() => setShowMobileUpdatesModal(true)}
             />
           )}
@@ -967,7 +904,11 @@ export default function App() {
               onNavigate={(v) => setActiveView(v)}
               onAdoptCrop={handleAdoptCrop}
               onUpdateStage={handleUpdateCropStage}
-              onOpenAuthModal={() => setActiveView('auth')}
+              onOpenAuthModal={(mode) => {
+                setAuthInitialMode(mode || 'signin');
+                setActiveView('auth');
+              }}
+              onSignOut={handleSignOut}
               onOpenMobileUpdates={() => setShowMobileUpdatesModal(true)}
             />
           )}
@@ -1079,6 +1020,7 @@ export default function App() {
               <AuthView
                 currentUser={user}
                 language={language}
+                initialMode={authInitialMode}
                 onAuthSuccess={(u) => {
                   handleSignInProfile(u);
                   setActiveView('dashboard');

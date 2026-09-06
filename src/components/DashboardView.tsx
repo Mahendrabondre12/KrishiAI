@@ -68,7 +68,8 @@ interface DashboardViewProps {
     expectedYieldQuintals?: number;
   }) => Promise<void>;
   onUpdateStage?: (stageNumber: 1 | 2 | 3 | 4, stageName: string) => Promise<void>;
-  onOpenAuthModal?: () => void;
+  onOpenAuthModal?: (initialMode?: 'signin' | 'signup') => void;
+  onSignOut?: () => void;
   onLogHarvestActivity?: (title: string, description: string) => void;
   onSelectState?: (stateName: string) => void;
   onOpenMobileUpdates?: () => void;
@@ -92,6 +93,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onAdoptCrop,
   onUpdateStage,
   onOpenAuthModal,
+  onSignOut,
   onLogHarvestActivity,
   onSelectState,
   onOpenMobileUpdates
@@ -136,20 +138,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <span className="text-xs text-emerald-200">
                 {farm.areaAcres} Acres • {farm.soilType} Soil • {farm.irrigationType}
               </span>
-              {user ? (
-                <button
-                  onClick={onOpenAuthModal}
-                  className="bg-emerald-950/60 hover:bg-emerald-950 text-emerald-200 hover:text-white border border-emerald-700/80 text-[11px] px-2.5 py-0.5 rounded-full font-semibold transition cursor-pointer flex items-center space-x-1"
-                >
-                  <span>👨‍🌾 {user.name}</span>
-                </button>
-              ) : (
-                <button
-                  onClick={onOpenAuthModal}
-                  className="bg-amber-400 hover:bg-amber-300 text-amber-950 text-[11px] px-2.5 py-0.5 rounded-full font-bold transition cursor-pointer flex items-center space-x-1 shadow-xs"
-                >
-                  <span>🔑 Sign In / Sign Up</span>
-                </button>
+              {user && (
+                <div className="flex items-center gap-2">
+                  <span
+                    className="bg-emerald-950/70 text-emerald-200 border border-emerald-700/80 text-[11px] px-3 py-1 rounded-full font-bold flex items-center space-x-1.5 shadow-xs"
+                    title="Farmer Profile"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>👨‍🌾 {user.name}</span>
+                  </span>
+                </div>
               )}
             </div>
 
