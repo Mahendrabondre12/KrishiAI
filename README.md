@@ -39,3 +39,16 @@ Express API
    │
    ▼
 Personalized Farm Recommendations
+
+# 🛠️ Technology Stack
+
+    Component	Technology
+   Frontend	   React 19, TypeScript, Vite
+   Styling	   Tailwind CSS
+   Backend	       Node.js, Express
+   Artificial      Intelligence	Google Gemini
+   Weather	        Open-Meteo
+   Authentication	   Firebase
+   Database	          JSON-backed demo database
+   Mobile Sharing	     SMS and WhatsApp links
+
